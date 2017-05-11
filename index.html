@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="assets/style/main.css" rel="stylesheet">
+  <title>Clinton Township, PA | Home</title>
+  <script>
+    var index = 0;
+    function startslides() {
+      var x = document.getElementsByClassName("slide");
+      for (var i = 0; i < x.length; i++) { x[i].style.display = "none"; }
+      index++;
+      if (index >= x.length) {index = 0}    
+      x[index].style.display = "block";  
+      setTimeout(startslides, 3000); // Change image every 2 seconds
+    }
+  </script>
+</head>
+<body onload=startslides()>
+  <header>
+    <nav>
+      <ul>
+        <li><a class="nav-item active" href="#">Home</a></li>
+        <li><a class="nav-item" href="contact.html">News</a></li>
+        <li><a class="nav-item" href="about.html">Representatives</a></li>
+        <li><a class="nav-item" href="contact.html">More</a></li>
+        <div align="right" style="line-height:48px; margin-right:2%;"><p>Clinton Township, Wayne County, PA</p></div>
+      </ul>
+    </nav>
+  </header>
+  <!-- Picture Slideshow -->
+  <div class="slideshow">
+    <img class="slide"  src="assets/img/slide1.jpg">
+    <img class="slide"  src="assets/img/slide2.jpg">
+    <img class="slide"  src="assets/img/slide3.jpg">
+  </div>
+  <main class"index">
+  </main>
+</body>
+</html>
