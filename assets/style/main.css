@@ -1,6 +1,7 @@
 * {
     margin: 0;
     font-family: 'Lato', sans-serif;
+    font-size: calc(100vh*.0275);
 }
 
 nav ul {
@@ -15,19 +16,19 @@ nav ul {
 
 nav li {
     float: left;
-    height: 48px;
+    height: calc(100vh*.075);
 }
 
 nav a {
     display: block;
     text-align: center;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: calc(100vh*.025);
+    padding-right: calc(100vh*.025);
     text-decoration: none;
     height:inherit;
-    line-height:48px;
+    line-height: calc(100vh*.075);
     color: black;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.15s ease-in-out;
 }
 
 nav a:hover {
@@ -40,15 +41,45 @@ nav a:hover {
 }
 
 .slideshow {
-    position: inherit;
-    z-index: inherit;
     width: 100%;
-    height: calc(100vw*.29);
-    box-shadow: inset 0 0 50px black;
+    height: calc(100vh*.4);
+    overflow: hidden;
+    box-shadow: inset 0 0 20px 8px black;
 }
 
-.slide {
+.slideshow * {
+    position: relative;
+    z-index: -1;
     min-width: 100%;
     max-height: 100%;
     object-fit: cover;
+    background-color: green;
+}
+
+#useful-links {
+    width: 300px;
+    padding: 25px;
+    margin: 25px;
+    height: calc(100vh*.10);
+    background-color: green;
+}
+
+.slide {
+    animation:fading 4.5s infinite;
+        background-color: green;
+}
+
+@keyframes fading {
+    0% {
+        opacity:0
+    }
+    4% {
+        opacity:1
+    }
+    96% {
+        opacity:1
+    }
+    100% {
+        opacity:0
+    }
 }
