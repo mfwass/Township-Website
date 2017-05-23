@@ -57,9 +57,7 @@ nav a:hover {
 }
 
 #useful-links {
-    width: 300px;
-    padding: 25px;
-    margin: 25px;
+    width: 100%;
     height: calc(100vh*.10);
     background-color: green;
 }
