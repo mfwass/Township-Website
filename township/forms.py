@@ -1,4 +1,4 @@
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 
 from township.models import NewsPost, SiteBanner
@@ -6,11 +6,11 @@ from township.models import NewsPost, SiteBanner
 
 class NewsPostForm(forms.ModelForm):
 
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = NewsPost
-        fields = ['title', 'content', 'category']
+        fields = ['title', 'content', 'category', 'viewable']
 
 
 class SiteBannerForm(forms.ModelForm):

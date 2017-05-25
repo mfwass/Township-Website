@@ -4,7 +4,7 @@
 
 {% block content %}
     <article>
-        <h2>{{ post.title }}{% if user.is_authenticated %} <span class="label error"><a href="{% url 'news_edit' post.pk %}">Edit</a></span>{% endif %}</h2>
+        <h2{% if not post.viewable %} class="muted"{% endif %}>{{ post.title }}{% if user.is_authenticated %} <span class="label error"><a href="{% url 'news_edit' post.pk %}">Edit</a></span>{% endif %}</h2>
         <p>
             {{ post.content | safe }}
         </p>

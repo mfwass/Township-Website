@@ -2,15 +2,19 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from township.forms import SiteBannerForm, NewsPostForm
 from township.models import NewsPost, SiteBanner
 
 
 def home(request):
-    contact_list = NewsPost.objects.all()
-    paginator = Paginator(contact_list, 5)  # Show 5 posts per page
+    if request.user.is_authenticated():
+        post_list = NewsPost.objects.all()
+    else:
+        post_list = NewsPost.objects.filter(viewable=True)
+
+    paginator = Paginator(post_list, 5)  # Show 5 posts per page
 
     page = request.GET.get('page')
     try:
@@ -64,7 +68,10 @@ def news_edit(request, post_id):
 def news_view(request, post_id):
     post = get_object_or_404(NewsPost, pk=post_id)
 
-    return render(request, 'news/view.html', {'post': post})
+    if post.viewable or request.user.is_authenticated():
+        return render(request, 'news/view.html', {'post': post})
+    else:
+        return redirect('home')
 
 
 @login_required

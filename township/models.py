@@ -15,6 +15,7 @@ class NewsPost(models.Model):
     date = models.DateTimeField(auto_now=True)
     content = RichTextField()
     category = models.CharField(max_length=30, choices=NEWS_POST_CATEGORIES)
+    viewable = models.BooleanField(default=True)
 
 
 class SiteBanner(models.Model):

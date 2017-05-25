@@ -21,8 +21,12 @@
 <body>
 {% if banner %}
     <div class="message warning banner" data-component="message">
-        <p class="text-center">{{ banner }} <a href="{% url 'banner_edit' %}"><span class="label error">Edit</span></a></p>
+        <p class="text-center">{{ banner }} <a href="{% url 'banner_edit' %}"><span class="label error">Edit</span></a>
+        </p>
     </div>
+{% endif %}
+{% if user.is_authenticated %}
+    <span class="float-right"><a class="admin-link" href="{% url 'logout' %}">Logout</a></span>
 {% endif %}
 <div class="cover">
     <h1 class="title text-center">Clinton Township <span class="muted italic">Wayne County, PA</span></h1>
@@ -35,7 +39,6 @@
             {% if user.is_authenticated %}
                 <li class="{% active '/news/make/' %}"><a href="{% url 'news_make' %}">Post News</a></li>
                 <li class="{% active '/banner/' %}"><a href="{% url 'banner_edit' %}">Modify Site Banner</a></li>
-                <li class="{% active '/logout/' %}"><a href="{% url 'logout' %}">Admin Logout</a></li>
             {% endif %}
         </ul>
     </nav>
@@ -66,20 +69,5 @@
 <!-- Kube JS + jQuery are used for some functionality, but are not required for the basic setup -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="{% static 'js/kube.min.js' %}"></script>
-<script>
-    var index = 0;
-    function startslides() {
-        var x = document.getElementsByClassName("slide");
-        for (var i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        index++;
-        if (index >= x.length) {
-            index = 0
-        }
-        x[index].style.display = "block";
-        setTimeout(startslides, 4500); // Change image every 2 seconds
-    }
-</script>
 </body>
 </html>
