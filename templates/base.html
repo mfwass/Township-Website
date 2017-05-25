@@ -32,29 +32,36 @@
 <main>
     <nav class="tabs" data-component="tabs">
         <ul>
-            <li class="{% active 'home' %}"><a href="{% url 'home' %}">Home</a></li>
+            <li class="{% active '/' %}"><a href="{% url 'home' %}">Home</a></li>
             <li class="{% active 'contact' %}"><a href="{% url 'home' %}">Contact</a></li>
+            {% if user.is_authenticated %}
+                <li class="{% active '/news/make/' %}"><a href="{% url 'news_make' %}">Post News</a></li>
+                <li class="{% active '/banner/' %}"><a href="{% url 'banner_edit' %}">Modify Site Banner</a></li>
+                <li class="{% active '/logout/' %}"><a href="{% url 'logout' %}">Admin Logout</a></li>
+            {% endif %}
         </ul>
     </nav>
-
-
     <div class="row gutters">
         <div class="col col-9">
             {% block content %}
             {% endblock %}
         </div>
-        <div class="col col-3">
-            <section>
-                <h2>Location</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95410.90497058975!2d-75.43991204269717!3d41.6429760140139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89db34e3d084f9d5%3A0x1d6a886817562aa!2sClinton+Township%2C+PA%2C+USA!5e0!3m2!1sen!2suk!4v1495733294394"
-                        width="200" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </section>
-        </div>
+        {% if request.path != '/news/make/' and request.path != '/news/edit/' %}
+            <div class="col col-3">
+                <section>
+                    <h2>Location</h2>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95410.90497058975!2d-75.43991204269717!3d41.6429760140139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89db34e3d084f9d5%3A0x1d6a886817562aa!2sClinton+Township%2C+PA%2C+USA!5e0!3m2!1sen!2suk!4v1495733294394"
+                            width="200" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </section>
+            </div>
+        {% endif %}
     </div>
 
     <footer>
         <p class="text-right small">
-            <a href="{% url 'login' %}">Admin Login</a>
+            {% if not user.is_authenticated %}
+                <a href="{% url 'login' %}">Admin Login</a>
+            {% endif %}
         </p>
     </footer>
 </main>
