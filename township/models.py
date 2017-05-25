@@ -2,7 +2,6 @@ from ckeditor.fields import RichTextField
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 
 NEWS_POST_CATEGORIES = (
     ('updates', 'Updates'),
@@ -19,5 +18,15 @@ class NewsPost(models.Model):
 
 
 class SiteBanner(models.Model):
-    content = models.TextField()
+    content = models.TextField(blank=True)
+    date = models.DateTimeField(auto_now=True)
+
+    @classmethod
+    def get(cls):
+        latest_banner = SiteBanner.objects.latest('date').content
+
+        if latest_banner is None:
+            return None
+        else:
+            return latest_banner
 

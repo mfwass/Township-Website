@@ -3,5 +3,30 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+    <section>
+        <h2>News</h2>
+        {% for post in posts %}
+            <section>
+                <h3><a href="{% url 'news_view' post.pk %}">{{ post.title }}</a> {% if user.is_authenticated %}<span class="label error"><a href="{% url 'news_edit' post.pk %}">Edit</a></span>{% endif %}</h3>
+                <em>Posted by Posted by {{ post.author.get_username }} on {{ post.date }}</em>
+            </section>
+        {% endfor %}
+
+        <nav class="pagination">
+            <ul>
+                {% if posts.has_previous %}
+                    <li class="prev"><a href="?page={{ posts.previous_page_number }}">&larr;</a></li>
+                {% endif %}
+
+                <li class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                </li>
+
+                {% if posts.has_next %}
+                    <li class="next"><a href="?page={{ posts.next_page_number }}">&rarr;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </section>
 
 {% endblock %}

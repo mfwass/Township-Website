@@ -1,12 +1,65 @@
+{% load staticfiles %}
+{% load banner %}
+{% load active %}
+
+{% banner as banner %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
+    <title>Clinton Township, PA :: {% block title %}{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Kube CSS -->
+    <link rel="stylesheet" href="{% static 'css/kube.min.css' %}">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
-{% block content %}
-{% endblock %}
+{% if banner %}
+    <div class="message warning banner" data-component="message">
+        {{ banner }}
 
+        <a href="{% url 'banner_edit' %}"><span class="label error">Edit</span></a>
+    </div>
+{% endif %}
+<div class="cover">
+    <h1 class="title text-center">Clinton Township <span class="muted italic">Wayne County, PA</span></h1>
+</div>
+<main>
+    <nav class="tabs" data-component="tabs">
+        <ul>
+            <li class="{% active 'home' %}"><a href="{% url 'home' %}">Home</a></li>
+            <li class="{% active 'contact' %}"><a href="{% url 'home' %}">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="row gutters">
+        <div class="col col-9">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="col col-3">
+            <section>
+                <h2>Location</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95410.90497058975!2d-75.43991204269717!3d41.6429760140139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89db34e3d084f9d5%3A0x1d6a886817562aa!2sClinton+Township%2C+PA%2C+USA!5e0!3m2!1sen!2suk!4v1495733294394"
+                        width="200" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <p class="text-right small">
+            <a href="{% url 'login' %}">Admin Login</a>
+        </p>
+    </footer>
+</main>
+<!-- Kube JS + jQuery are used for some functionality, but are not required for the basic setup -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{% static 'js/kube.min.js' %}"></script>
 </body>
 </html>

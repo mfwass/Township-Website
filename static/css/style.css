@@ -1,0 +1,21 @@
+main {
+    padding: 5rem 10rem;
+}
+
+@media (max-width: 500px) {
+    main {
+        padding: 2.5rem 5rem;
+    }
+}
+
+.cover {
+    background: url('https://upload.wikimedia.org/wikipedia/commons/8/8b/Prompton_State_Park.jpg') center center;
+    width: 100%;
+    height: auto;
+    padding: 3rem;
+    margin-top: -24px;
+}
+
+.banner {
+    box-shadow: 0 1px 6px rgba(10, 10, 10, .9);
+}

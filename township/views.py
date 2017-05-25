@@ -1,16 +1,28 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
-# Create your views here.
 from township.forms import SiteBannerForm, NewsPostForm
-from township.models import NewsPost
+from township.models import NewsPost, SiteBanner
 
 
 def home(request):
-    return render(request, 'home.html')
+    contact_list = NewsPost.objects.all()
+    paginator = Paginator(contact_list, 5)  # Show 5 posts per page
+
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'home.html', {'posts': posts})
 
 
 @login_required
@@ -61,7 +73,8 @@ def banner_edit(request):
         form = SiteBannerForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            form.save();
     else:
-        form = SiteBannerForm
-    return render(request, 'news/banner.html', {form: form})
+        form = SiteBannerForm(initial={'content': SiteBanner.get()})
+
+    return render(request, 'news/banner.html', {'form': form})
