@@ -82,8 +82,10 @@ nav a:hover {
     }
 }
 
-#content {
+#main {
     background-image: url("../img/bg.png");
+}
+#content {
     margin: 0 auto;
     width: 93.5%
 }
