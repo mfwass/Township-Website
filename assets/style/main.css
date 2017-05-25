@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Didact Gothic', sans-serif;
     font-size: calc(100vh*.0275);
 }
 
@@ -84,6 +84,7 @@ nav a:hover {
 
 .index {
     background-image: url("../img/bg.png");
+    font-family: 'Lato', sans-serif;
 }
 
 #content {
