@@ -3,8 +3,8 @@
   * Ubuntu: sudo apt-get install postgresql postgresql-contrib
 
 2. Set-up Environment
-  * virtualenv --no-site-packages TownshipSite/
-  * cd TownshipSite/
+  * virtualenv --no-site-packages Township-Website/
+  * cd Township-Website/
   * source bin/activate
   * pip install -r requirements.txt
 
