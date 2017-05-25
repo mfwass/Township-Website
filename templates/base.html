@@ -21,9 +21,7 @@
 <body>
 {% if banner %}
     <div class="message warning banner" data-component="message">
-        {{ banner }}
-
-        <a href="{% url 'banner_edit' %}"><span class="label error">Edit</span></a>
+        <p class="text-center">{{ banner }} <a href="{% url 'banner_edit' %}"><span class="label error">Edit</span></a></p>
     </div>
 {% endif %}
 <div class="cover">
@@ -68,5 +66,20 @@
 <!-- Kube JS + jQuery are used for some functionality, but are not required for the basic setup -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="{% static 'js/kube.min.js' %}"></script>
+<script>
+    var index = 0;
+    function startslides() {
+        var x = document.getElementsByClassName("slide");
+        for (var i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        index++;
+        if (index >= x.length) {
+            index = 0
+        }
+        x[index].style.display = "block";
+        setTimeout(startslides, 4500); // Change image every 2 seconds
+    }
+</script>
 </body>
 </html>

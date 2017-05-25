@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
     <section>
+        <div class="slideshow">
+            <img class="slide" src="{% static 'img/slide1.jpg'%}">
+            <img class="slide" src="{% static 'img/slide2.jpg'%}">
+            <img class="slide" src="{% static 'img/slide3.jpg'%}">
+        </div>
+    </section>
+    <section>
         <h2>News</h2>
         {% for post in posts %}
             <section>
-                <h3><a href="{% url 'news_view' post.pk %}">{{ post.title }}</a> {% if user.is_authenticated %}<span class="label error"><a href="{% url 'news_edit' post.pk %}">Edit</a></span>{% endif %}</h3>
+                <h3><a href="{% url 'news_view' post.pk %}">{{ post.title }}</a> {% if user.is_authenticated %}
+                    <span class="label error"><a href="{% url 'news_edit' post.pk %}">Edit</a></span>{% endif %}</h3>
                 <em>Posted by Posted by {{ post.author.get_username }} on {{ post.date }}</em>
             </section>
         {% endfor %}
