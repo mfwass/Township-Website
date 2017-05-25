@@ -85,7 +85,10 @@ nav a:hover {
 .index {
     background-image: url("../img/bg.png");
 }
+
 #content {
+    padding-top: 2.5%; 
+    padding-bottom: 3%; 
     margin: 0 auto;
     width: 93.5%
 }
