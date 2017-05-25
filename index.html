@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="assets/style/main.css" rel="stylesheet">
+  <title>Clinton Township, PA | Home</title>
+  <script>
+    var index = 0;
+    function startslides() {
+      var x = document.getElementsByClassName("slide");
+      for (var i = 0; i < x.length; i++) { x[i].style.display = "none"; }
+      index++;
+      if (index >= x.length) {index = 0}    
+      x[index].style.display = "block";  
+      setTimeout(startslides, 4500); // Change image every 2 seconds
+    }
+  </script>
+</head>
+<body onload=startslides()>
+  <header>
+    <nav>
+      <ul>
+        <li><a class="nav-item active" href="#">Home</a></li>
+        <li><a class="nav-item" href="contact.html">News</a></li>
+        <li><a class="nav-item" href="about.html">Representatives</a></li>
+        <li><a class="nav-item" href="contact.html">More</a></li>
+        <div align="right" style="line-height:48px; margin-right:2%;"><p>Clinton Township, Wayne County, PA</p></div>
+      </ul>
+    </nav>
+  </header>
+  <!-- Picture Slideshow -->
+  <div class="slideshow">
+    <img class="slide"  src="assets/img/slide1.jpg">
+    <img class="slide"  src="assets/img/slide2.jpg">
+    <img class="slide"  src="assets/img/slide3.jpg">
+  </div>
+  <main class="index">
+    <div align="center" id="useful-links" class="useful-links" style="line-height:calc(100vh*.10)">
+      <h2>Useful Links</h2>
+    </div>
+    <div align="center" id="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur venenatis efficitur ligula, ut luctus enim rutrum vel. Morbi molestie sem nec interdum varius. Pellentesque aliquet, neque sed egestas dignissim, nulla odio varius tortor, sed accumsan quam quam ut felis. Suspendisse potenti. Nam a lacinia ante. Mauris ac nunc lectus. Nam sit amet elementum sem, ac accumsan ligula. Ut faucibus et tellus vitae auctor. Integer rhoncus mauris non arcu congue, quis pharetra mauris consequat. Nulla mattis ligula orci, in ullamcorper justo tincidunt vitae. Ut sodales sapien id lorem maximus pharetra. Praesent molestie lorem vitae consequat luctus. Nulla ut accumsan dui. Vivamus imperdiet aliquet felis, ut tempor massa tincidunt pretium. Nulla rutrum pretium diam. Nunc nec mollis leo, sed egestas massa.</p>
+
+      <p>Aliquam molestie aliquam magna, sit amet maximus est dignissim quis. Curabitur sit amet egestas enim. Vestibulum rhoncus bibendum tempor. In rhoncus justo sit amet elit sollicitudin imperdiet. Donec congue leo eget nisl faucibus, a tristique nunc malesuada. Donec leo augue, dignissim at sem nec, lacinia tincidunt arcu. Proin consectetur metus nec lectus vestibulum sodales. Etiam dignissim nunc enim, ut blandit ante viverra id. Suspendisse semper neque nec sapien efficitur, quis euismod felis tempus.</p>
+
+      <p>Ut eu posuere ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas tincidunt lorem non tortor tempor sollicitudin. Quisque eu elit non quam euismod malesuada. Mauris ultrices auctor tincidunt. Praesent aliquet nulla vehicula ante efficitur, vitae aliquam odio luctus. Proin ac aliquet dui, ac dapibus lacus. Proin magna ex, consequat eget tempus sed, malesuada sit amet enim. Aliquam tellus leo, feugiat lobortis sem ac, imperdiet consectetur erat.</p>
+
+      <p>Curabitur hendrerit, tellus ac fermentum finibus, arcu odio pulvinar felis, id convallis diam mi in nisl. Vestibulum tempus aliquet pellentesque. Aenean luctus, enim blandit dictum sollicitudin, arcu diam posuere magna, et pulvinar sapien elit id nunc. Morbi iaculis felis ipsum, malesuada varius sem pellentesque at. Mauris feugiat et leo quis posuere. Nam et diam leo. Nunc sit amet lacus non magna rutrum gravida. Mauris nec lectus nibh. Morbi mattis cursus arcu et ultrices. In accumsan purus id eros ullamcorper pretium vitae id tortor.</p>
+
+      <p>Nulla volutpat aliquet maximus. Donec cursus ligula eros, in pellentesque sapien aliquet vel. Aliquam est mi, dignissim convallis mauris a, lacinia porta orci. Praesent lectus libero, scelerisque vitae ullamcorper ut, convallis a odio. Donec accumsan placerat velit a aliquam. Quisque bibendum ante sapien, at luctus massa molestie eget. Suspendisse accumsan justo nisi, quis laoreet velit elementum non. Etiam vel dolor eu metus sollicitudin blandit nec non sapien. Mauris hendrerit dui et mi pharetra laoreet. Fusce vehicula leo vitae est elementum congue.</p>
+    </div>
+  </main>
+</body>
+</html>
